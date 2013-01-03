@@ -1,0 +1,42 @@
+/* 
+Styles for Example Bar Chart
+@dosberg
+*/
+
+body {
+	text-align: center;
+	padding: 60px;
+	font-family: arial;
+}
+h1 {
+	font-size:36px;
+}
+.container {
+	position: relative;
+	margin: 0 auto;
+	width: 800px;
+	height: 400px;
+}
+#legend table {
+    margin: 45px auto 15px;
+    font-weight: bold;
+}
+#legend .legendColorBox {
+    padding-right: 3px;
+}
+#legend .legendLabel {
+    padding-right: 15px;
+}
+#left {
+	width: 400px;
+	height: 400px;
+	float: left;
+}
+#right {
+	width: 400px;
+	height: 400px;
+	float: left;
+}		
+.pieLabel {
+	font-size: 12px;
+}	

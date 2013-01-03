@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Pie Comparison built with Flot</title>
+
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.8.0/build/cssreset/cssreset-min.css">
+	<link rel="stylesheet" href="style.css">
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script language="javascript" type="text/javascript" src="jquery.flot.js"></script>
+    <script language="javascript" type="text/javascript" src="jquery.flot.pie.js"></script>
+	
+	<script type="text/javascript">
+	$(function () {
+
+		// Example Data
+		var data = [
+			{ label: "Stocks",  data: 40},
+			{ label: "Bonds",  data: 40},
+			{ label: "Cash",  data: 15}
+		];
+		var data2 = [
+			{ label: "Stocks",  data: 80},
+			{ label: "Bonds",  data: 5},
+			{ label: "Cash",  data: 5}
+		];
+
+	    $.plot($("#left"), data2, 
+		{
+			series: {
+				pie: { 
+					innerRadius: 0,
+					show: true,
+					label: {
+							show: true,
+							radius: 0.5,
+							formatter: function(label, series){
+	                        return '<div>'+label+'<br/>'+Math.round(series.percent)+'%</div>';
+	                    },
+	                    threshold: 0.0
+					},
+					stroke: {
+						width: 0,
+					}
+				}
+			},
+			grid: {
+				//hoverable: true,
+				//clickable: true
+			},
+			legend: {
+	            show: false
+	        },
+	        colors: ["#aed992", "#88a8df", "#8579c5", "#ccc"]		
+		});
+		$("#left").bind("plothover", pieHover);
+		$("#right").bind("plotclick", pieClick);
+
+	    $.plot($("#right"), data, 
+		{
+			series: {
+				pie: { 
+					innerRadius: 0,
+					show: true,
+					label: {
+							show: true,
+							radius: 0.5,
+							formatter: function(label, series){
+	                        return '<div>'+label+'<br/>'+Math.round(series.percent)+'%</div>';
+	                },
+	                threshold: 0.0
+					},
+					stroke: {
+						width: 0,
+					}
+				}
+			},
+			grid: {
+				hoverable: true,
+				clickable: true
+			},
+			legend: {
+	            show: false
+	        },
+	        colors: ["#ddf8cc", "#c3d9ff", "#c2bddd", "#ddd"]
+		});
+	});
+
+	function pieHover(event, pos, obj) 
+	{
+		if (!obj)
+	                return;
+		percent = parseFloat(obj.series.percent).toFixed(2);
+		$("#hover").html('<span style="font-weight: bold; color: '+obj.series.color+'">'+obj.series.label+' ('+percent+'%)</span>');
+	}
+
+	function pieClick(event, pos, obj) 
+	{
+		if (!obj)
+	                return;
+		percent = parseFloat(obj.series.percent).toFixed(2);
+		alert(''+obj.series.label+': '+percent+'%');
+	}
+	</script>
+</head>
+<body>
+	<h1>Overall Allocations</h1>
+	<div class="container">
+		<div id="left"></div>
+		<div id="right"></div>
+	</div>
+	<p>Pie chart comparison built with <a href="http://www.flotcharts.org/">Flot</a></p>
+	<p><a href="http://twitter.com/dosberg">@dosberg</a>
+</body>
+</html>
+
