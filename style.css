@@ -11,11 +11,17 @@ body {
 h1 {
 	font-size:36px;
 }
+h2 {
+	font-weight: bold;
+}
 .container {
 	position: relative;
 	margin: 0 auto;
 	width: 800px;
 	height: 400px;
+}
+.contained {
+	float: left;
 }
 #legend table {
     margin: 45px auto 15px;
@@ -30,12 +36,10 @@ h1 {
 #left {
 	width: 400px;
 	height: 400px;
-	float: left;
 }
 #right {
 	width: 400px;
 	height: 400px;
-	float: left;
 }		
 .pieLabel {
 	font-size: 12px;

@@ -83,7 +83,7 @@
 			legend: {
 	            show: false
 	        },
-	        colors: ["#ddf8cc", "#c3d9ff", "#c2bddd", "#ddd"]
+	        colors: ["#aed992", "#88a8df", "#8579c5", "#ccc"]	
 		});
 	});
 
@@ -107,11 +107,15 @@
 <body>
 	<h1>Overall Allocations</h1>
 	<div class="container">
-		<div id="left"></div>
-		<div id="right"></div>
+		<div class="contained">
+			<div id="left"></div>
+			<h2>Where You Are Now</h2>
+		</div>
+		<div class="contained">
+			<div id="right"></div>
+			<h2>Where You Should Go</h2>
+		</div>
 	</div>
-	<p>Pie chart comparison built with <a href="http://www.flotcharts.org/">Flot</a></p>
-	<p><a href="http://twitter.com/dosberg">@dosberg</a>
 </body>
 </html>
 
